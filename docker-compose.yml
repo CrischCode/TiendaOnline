@@ -1,27 +1,25 @@
-version: "3.9"
-
 services:
   api:
-    build: .
-    container_name: tienda-online
+    build: ./E-Commerce.API
+    container_name: api-service
     ports:
       - "5000:8080"
     depends_on:
       - postgres
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=tiendaonline_db;Username=postgres;Password=admin
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=tiendaonline_db;Username=cristianchamo;Password=admin
 
   postgres:
     image: postgres:16
-    container_name: tienda-online
+    container_name: postgres-db
     restart: always
     environment:
       POSTGRES_USER: cristianchamo
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: tiendaonline_db
     ports:
-      - "15432:5432"
+      - "15432:5432" 
     volumes:
       - pgdata:/var/lib/postgresql/data
 

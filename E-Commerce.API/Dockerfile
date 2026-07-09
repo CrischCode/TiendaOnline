@@ -5,8 +5,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "./E-Commer.API.csproj"
-RUN dotnet publish "./E-Commerce.API.csproj" -c Release -o /app/publish
+RUN dotnet restore "E-Commerce.API.csproj"
+RUN dotnet publish "E-Commerce.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
